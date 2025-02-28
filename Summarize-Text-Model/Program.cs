@@ -1,20 +1,23 @@
 ﻿using Azure;
 using Azure.AI.TextAnalytics;
 
-namespace LanguageDetectionExample
+namespace Example
 {
     class Program
     {
-        private static readonly AzureKeyCredential credentials = new AzureKeyCredential("replace-with-your-key-here");
-        private static readonly Uri endpoint = new Uri("replace-with-your-endpoint-here");
+        static string languageKey = "DBf9ZOhd0V6iWvwCfdMFPKN5EOvoeV9XbXLRbC4tkF8H3aMpDAe7JQQJ99BBACYeBjFXJ3w3AAAaACOGnRRX";
+        static string languageEndpoint = "https://language-test132.cognitiveservices.azure.com/";
+
+        private static readonly AzureKeyCredential credentials = new AzureKeyCredential(languageKey);
+        private static readonly Uri endpoint = new Uri(languageEndpoint);
 
         // Example method for summarizing text
         static async Task TextSummarizationExample(TextAnalyticsClient client)
         {
-            string document = @"The extractive summarization feature in Text Analytics uses natural language processing techniques to locate key sentences in an unstructured text document. 
+            string document = @"The extractive summarization feature uses natural language processing techniques to locate key sentences in an unstructured text document. 
                 These sentences collectively convey the main idea of the document. This feature is provided as an API for developers. 
                 They can use it to build intelligent solutions based on the relevant information extracted to support various use cases. 
-                In the public preview, extractive summarization supports several languages. It is based on pretrained multilingual transformer models, part of our quest for holistic representations. 
+                Extractive summarization supports several languages. It is based on pretrained multilingual transformer models, part of our quest for holistic representations. 
                 It draws its strength from transfer learning across monolingual and harness the shared nature of languages to produce models of improved quality and efficiency.";
 
             // Prepare analyze operation input. You can add multiple documents to this list and perform the same
@@ -26,7 +29,7 @@ namespace LanguageDetectionExample
 
             TextAnalyticsActions actions = new TextAnalyticsActions()
             {
-                ExtractSummaryActions = new List<ExtractSummaryAction>() { new ExtractSummaryAction() }
+                ExtractiveSummarizeActions = new List<ExtractiveSummarizeAction>() { new ExtractiveSummarizeAction() }
             };
 
             // Start analysis process.
@@ -45,9 +48,9 @@ namespace LanguageDetectionExample
             // View operation results.
             await foreach (AnalyzeActionsResult documentsInPage in operation.Value)
             {
-                IReadOnlyCollection<ExtractSummaryActionResult> summaryResults = documentsInPage.ExtractSummaryResults;
+                IReadOnlyCollection<ExtractiveSummarizeActionResult> summaryResults = documentsInPage.ExtractiveSummarizeResults;
 
-                foreach (ExtractSummaryActionResult summaryActionResults in summaryResults)
+                foreach (ExtractiveSummarizeActionResult summaryActionResults in summaryResults)
                 {
                     if (summaryActionResults.HasError)
                     {
@@ -57,7 +60,7 @@ namespace LanguageDetectionExample
                         continue;
                     }
 
-                    foreach (ExtractSummaryResult documentResults in summaryActionResults.DocumentsResults)
+                    foreach (ExtractiveSummarizeResult documentResults in summaryActionResults.DocumentsResults)
                     {
                         if (documentResults.HasError)
                         {
@@ -70,7 +73,7 @@ namespace LanguageDetectionExample
                         Console.WriteLine($"  Extracted the following {documentResults.Sentences.Count} sentence(s):");
                         Console.WriteLine();
 
-                        foreach (SummarySentence sentence in documentResults.Sentences)
+                        foreach (ExtractiveSummarySentence sentence in documentResults.Sentences)
                         {
                             Console.WriteLine($"  Sentence: {sentence.Text}");
                             Console.WriteLine();
@@ -78,7 +81,6 @@ namespace LanguageDetectionExample
                     }
                 }
             }
-
         }
 
         static async Task Main(string[] args)

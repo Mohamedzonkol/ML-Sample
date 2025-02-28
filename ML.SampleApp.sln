@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extract-Information-Model",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Summarize-Text-Model", "Summarize-Text-Model\Summarize-Text-Model.csproj", "{89E5F919-7E48-4EE6-AE10-AA592CF19553}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Summarize-Conversation-Model", "Summarize-Conversation-Model\Summarize-Conversation-Model.csproj", "{4BF54F28-4C7C-412C-A0BB-496BD23AC279}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{89E5F919-7E48-4EE6-AE10-AA592CF19553}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89E5F919-7E48-4EE6-AE10-AA592CF19553}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89E5F919-7E48-4EE6-AE10-AA592CF19553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BF54F28-4C7C-412C-A0BB-496BD23AC279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BF54F28-4C7C-412C-A0BB-496BD23AC279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BF54F28-4C7C-412C-A0BB-496BD23AC279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BF54F28-4C7C-412C-A0BB-496BD23AC279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
