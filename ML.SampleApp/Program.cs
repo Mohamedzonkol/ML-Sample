@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ML_SampleApp;
 
-Console.WriteLine("Hello, World!");
+//Console.WriteLine("Hello, World!");
 //Load sample data
 var sampleData = new PredictiveModel.ModelInput()
 {
